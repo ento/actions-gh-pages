@@ -77,6 +77,16 @@ else
     git checkout --orphan "${remote_branch}"
 fi
 
+if [ -n "${INPUT_TRACKWITHLFS}" ]; then
+    print_info "Tracking with Git LFS: ${INPUT_TRACKWITHLFS}"
+    git lfs install
+    while read -r args; do
+        if [ -n "$args" ]; then
+            git lfs track $args
+        fi
+    done <<< "${INPUT_TRACKWITHLFS}"
+fi
+
 # push to publishing branch
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"

@@ -16,3 +16,7 @@ inputs:
     description: 'If existing files in the publish branch should be not removed before deploying'
     required: false
     default: 'false'
+  trackWithLfs:
+    description: 'Files to track with Git LFS. `git lfs track` is invoked for each line as-is'
+    required: false
+    default: ''

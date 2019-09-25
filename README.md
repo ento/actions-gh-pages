@@ -29,6 +29,7 @@ Table of Contents
     - [⭐️ `GITHUB_TOKEN`](#%EF%B8%8F-github_token)
     - [⭐️ Suppressing empty commits](#%EF%B8%8F-suppressing-empty-commits)
     - [⭐️ Keeping existing files](#%EF%B8%8F-keeping-existing-files)
+    - [⭐️ Using Git LFS](#%EF%B8%8F-using-git-lfs)
 - [Tips and FAQ](#tips-and-faq)
   - [How to add `CNAME`](#how-to-add-cname)
   - [Deployment completed but you cannot read](#deployment-completed-but-you-cannot-read)
@@ -217,6 +218,24 @@ For example:
     keepFiles: true
 ```
 
+#### ⭐️ Using Git LFS
+
+To manage some of the artifacts with Git LFS, specify the file pattern to track in the optional parameter `trackWithLfs`.
+
+For example:
+
+```yaml
+- name: Deploy
+  uses: peaceiris/actions-gh-pages@v2.4.0
+  env:
+    ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    PUBLISH_BRANCH: gh-pages
+    PUBLISH_DIR: ./public
+  with:
+    trackWithLfs: |
+      *.png
+      *.svg
+```
 
 
 ## Tips and FAQ
